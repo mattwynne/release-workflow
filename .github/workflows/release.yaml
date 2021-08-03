@@ -1,15 +1,19 @@
 on:
-  pull_request:
+  push:
     branches:
       - release*
-    types: [closed]
 
 jobs:
   release:
-    if: github.event.pull_request.merged == true
     environment: Release
     steps:
+      - name: Parse release version
+        run: |
+          ref="${{ github.ref }}"
+          branch=${ref/refs\/heads\//}
+          version=${branch/release\//}
       - name: Create release
         run: |
-          echo "head: ${{ github.event.pull_request.head }}"
-          echo "base: ${{ github.event.pull_request.base }}"
+          echo version: $version
+          echo branch: $branch
+          echo ref: $ref
