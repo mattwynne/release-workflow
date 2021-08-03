@@ -24,4 +24,4 @@ jobs:
           echo "::set-output name=result::$version"
       - name: Create release
         run: |
-          gh release create v${{ steps.version.result }} -F CHANGELOG.md
+          gh release create v${{ steps.version.outputs.result }} -F CHANGELOG.md
