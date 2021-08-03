@@ -3,3 +3,4 @@
 ## Features
 
 * Feature A
+* Feature B
