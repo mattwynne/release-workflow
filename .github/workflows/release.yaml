@@ -8,15 +8,20 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # environment: Release
+    environment: Release
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
     steps:
+      - uses: actions/checkout@v2
       - name: Parse release version
+        id: version
         run: |
           ref="${{ github.ref }}"
           branch=${ref/refs\/heads\//}
-          version=${branch/release\//}
+          version=${branch/release\/v/}
+          echo "::set-output name=result::$version"
       - name: Create release
         run: |
-          echo version: $version
-          echo branch: $branch
-          echo ref: $ref
+          gh release create v${{ steps.version.result }} -f CHANGELOG.md
