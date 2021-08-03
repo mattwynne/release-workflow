@@ -1,0 +1,14 @@
+on:
+  pull_request:
+    branches:
+      - release-*
+    types: [closed]
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Create release
+        run: |
+          echo "head: ${{ github.event.pull_request.head }}"
+          echo "base: ${{ github.event.pull_request.base }}"

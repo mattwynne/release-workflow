@@ -63,11 +63,6 @@ jobs:
           git checkout v${{ released_version }
           git checkout -b release/v${{ env.next_version }}
           git push --force --set-upstream origin release/v${{ env.next_version }}
-      - name: Create tag for this release
-        run: |
-          git checkout ${{ github.ref }}
-          git tag v${{ env.next_version }}
-          git push --tags
       - name: Create/update a branch off `main` for the commit to be released
         run: |
           git checkout ${{ github.ref }}
