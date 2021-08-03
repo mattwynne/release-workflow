@@ -60,7 +60,7 @@ jobs:
           fetch-depth: 0
       - name: Create/update target branch for release, based on previous release
         run: |
-          git checkout v${{ released_version }
+          git checkout v${{ env.released_version }
           git checkout -b release/v${{ env.next_version }}
           git push --force --set-upstream origin release/v${{ env.next_version }}
       - name: Create/update a branch off `main` for the commit to be released
