@@ -22,6 +22,11 @@ jobs:
           branch=${ref/refs\/heads\//}
           version=${branch/release\/v/}
           echo "::set-output name=result::$version"
+      - name: read latest version from the changelog
+        id: next-release-from-changelog
+        uses: mattwynne/changelog-action@v1.2
+        with:
+          args: show ${{ steps.version.outputs.result }} -o ${{ runner.temp }}/latest.md
       - name: Create release
         run: |
-          gh release create v${{ steps.version.outputs.result }} -F CHANGELOG.md
+          gh release create v${{ steps.version.outputs.result }} -F ${{ runner.temp }}/latest.md
