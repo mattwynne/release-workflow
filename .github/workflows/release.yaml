@@ -29,7 +29,7 @@ jobs:
           args: show ${{ steps.version.outputs.result }}
       - name: Create release
         run: |
-          cat >${{ runner.temp }}/notes <<EOT
+          notes=<<EOT
           ${{ steps.release-notes.outputs.output }}
           EOT
-          gh release create v${{ steps.version.outputs.result }} --notes-file ${{ runner.temp }}/notes
+          gh release create v${{ steps.version.outputs.result }} --notes "$notes"
