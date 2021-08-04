@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.0.0] - 2021-08-03
+### Changed
+- Use multi-line string output for release notes
+
 ## [7.0.0] - 2021-08-03
 ### Added
 - more multi-line
@@ -35,7 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Feature A
 
-[Unreleased]: https://github.com/mattwynne/release-workflow/compare/7.0.0...main
+[Unreleased]: https://github.com/mattwynne/release-workflow/compare/8.0.0...HEAD
+[8.0.0]: https://github.com/mattwynne/release-workflow/compare/7.0.0...8.0.0
 [7.0.0]: https://github.com/mattwynne/release-workflow/compare/6.0.0...main
 [6.0.0]: https://github.com/mattwynne/release-workflow/compare/5.0.0...main
 [5.0.0]: https://github.com/mattwynne/release-workflow/compare/4.0.0...main
