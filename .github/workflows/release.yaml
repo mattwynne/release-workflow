@@ -26,10 +26,9 @@ jobs:
         id: release-notes
         uses: mattwynne/changelog-action@v1.2
         with:
-          args: show ${{ steps.version.outputs.result }}
+          args: show ${{ steps.version.outputs.result }} -o ${{ runner.temp }}/notes
       - name: Create release
         run: |
-          notes=<<EOT
-          ${{ steps.release-notes.outputs.output }}
-          EOT
+          notes=$(cat ${{ runner.temp }}/notes)
+          echo "$notes"
           gh release create v${{ steps.version.outputs.result }} --notes "$notes"
