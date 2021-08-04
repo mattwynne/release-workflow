@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.0.0] - 2021-08-03
+### Added
+- multi-line release notes
+
 ## [4.0.0] - 2021-08-03
 ### Changed
 - release workflow
@@ -23,7 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Feature A
 
-[Unreleased]: https://github.com/mattwynne/release-workflow/compare/4.0.0...main
+[Unreleased]: https://github.com/mattwynne/release-workflow/compare/5.0.0...main
+[5.0.0]: https://github.com/mattwynne/release-workflow/compare/4.0.0...main
 [4.0.0]: https://github.com/mattwynne/release-workflow/compare/3.0.0...main
 [3.0.0]: https://github.com/mattwynne/release-workflow/compare/2.0.0...main
 [2.0.0]: https://github.com/mattwynne/release-workflow/compare/1.0.0...2.0.0
