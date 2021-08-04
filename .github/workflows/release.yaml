@@ -24,12 +24,13 @@ jobs:
           echo "::set-output name=result::$version"
       - name: read latest version from the changelog
         id: release-notes
-        uses: mattwynne/changelog-action@v1.2
+        uses: mattwynne/changelog-action@v1.3
         with:
           args: show ${{ steps.version.outputs.result }}
       - name: Create release
         run: |
           notes=<<EOT
-          ${{ steps.release-notes.outputs.output }}
+          ${{ steps.release-notes.outputs.result }}
           EOT
+          echo "$notes"
           gh release create v${{ steps.version.outputs.result }} --notes "$notes"
