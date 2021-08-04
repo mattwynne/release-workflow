@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - release/*
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: Release
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - name: Parse release version
+        id: version
+        run: |
+          ref="${{ github.ref }}"
+          branch=${ref/refs\/heads\//}
+          version=${branch/release\/v/}
+          echo "::set-output name=result::$version"
+      - name: read latest version from the changelog
+        id: release-notes
+        uses: mattwynne/changelog-action@v1.2
+        with:
+          args: show ${{ steps.version.outputs.result }}
+      - name: Create release
+        run: |
+          gh release create v${{ steps.version.outputs.result }} --notes "${{ steps.release-notes.outputs.output}}"
